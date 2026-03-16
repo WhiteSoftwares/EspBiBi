@@ -1,239 +1,308 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cardápio de Espetos</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #1a1a1a;
-      color: #fff;
-      line-height: 1.6;
-    }
-    header {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #333;
-      text-shadow: 2px 2px 5px black;
-    }
-    header h1 {
-      font-size: 3em;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    nav {
-      background-color: #ffcc00;
-      color: #000;
-      padding: 10px;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      margin: 8px 10px;
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .content {
-      padding: 20px;
-    }
-    .section {
-      display: none;
-    }
-    .active {
-      display: block;
-    }
-    h2 {
-      color: #ffcc00;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-    }
-    ul {
-      columns: 2;
-      list-style: none;
-      padding: 0;
-      margin-top: 10px;
-    }
-    .footer {
-      background-color: #222;
-      padding: 20px;
-      text-align: center;
-      color: #ccc;
-      margin-top: 40px;
-    }
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      border-radius: 50px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 2px 2px 10px #000;
-      z-index: 999;
-    }
-    .whatsapp-button:hover {
-      background-color: #1ebd5a;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio</title>
 
-    @media (max-width: 768px) {
-      ul {
-        columns: 1;
-      }
-      header h1 {
-        font-size: 2em;
-      }
-      nav a {
-        display: block;
-        margin: 5px 0;
-      }
-    }
-  </style>
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:white;
+color:#111;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+header{
+background:#4169E1;
+color:white;
+padding:20px;
+font-size:30px;
+font-weight:bold;
+text-align:center;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:40px;
+background:#2e52c2;
+padding:12px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.title h1{
+color:#4169E1;
+font-size:40px;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.card{
+width:220px;
+border:3px solid #4169E1;
+border-radius:10px;
+overflow:hidden;
+background:white;
+text-align:center;
+cursor:pointer;
+transition:0.25s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:140px;
+object-fit:cover;
+}
+
+.card h2{
+padding:15px;
+}
+
+.content{
+margin-top:40px;
+}
+
+.section{
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
+.section h2{
+margin-bottom:15px;
+color:#4169E1;
+text-align:center;
+}
+
+.categoria-img{
+width:100%;
+max-width:500px;
+display:block;
+margin:20px auto;
+border-radius:10px;
+}
+
+ul{
+list-style:none;
+max-width:400px;
+margin:auto;
+}
+
+li{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+footer{
+margin-top:auto;
+background:#4169E1;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Cardápio de Espetos</h1>
-  </header>
+<header>
+Cardápio
+</header>
 
-  <nav>
-    <a href="javascript:void(0)" onclick="showSection('espetos')">Espetos</a>
-    <a href="javascript:void(0)" onclick="showSection('caldos')">Caldos</a>
-    <a href="javascript:void(0)" onclick="showSection('bebidas')">Bebidas</a>
-    <a href="javascript:void(0)" onclick="showSection('doses')">Doses</a>
-    <a href="javascript:void(0)" onclick="showSection('contato')">Contato</a>
-  </nav>
+<nav>
+<a href="#">Home</a>
+</nav>
 
-  <div class="content">
-    <div id="espetos" class="section active">
-      <h2>Espetos</h2>
-      <ul>
-        <li>Carne</li>
-        <li>Asa de Frango</li>
-        <li>Calabresa</li>
-        <li>Peito de Frango</li>
-        <li>Coração de Frango</li>
-        <li>Coração de Boi</li>
-        <li>Língua</li>
-        <li>Ubre</li>
-        <li>Porco</li>
-        <li>Carne Moída</li>
-        <li>Costela de Carneiro</li>
-        <li>Medalhão de Frango</li>
-        <li>Costela de Porco</li>
-        <li>Queijo de Coalho</li>
-        <li>Ovo de Codorna</li>
-        <li>Pão de Alho</li>
-        <li>Pão de Alho Recheado</li>
-        <li>Linguiça de Charque</li>
-        <li>Picanha em Pedaço</li>
-      </ul>
-    </div>
+<div class="container">
 
-    <div id="caldos" class="section">
-      <h2>Caldos</h2>
-      <ul>
-        <li>Sopa Pequena</li>
-        <li>Sopa Grande</li>
-        <li>Caldo de Costela P</li>
-        <li>Caldo de Costela G</li>
-        <li>Caldo de Mocotó P</li>
-        <li>Caldo de Mocotó G</li>
-      </ul>
-    </div>
+<div class="title">
+<h1>Nosso Cardápio</h1>
+<p>Escolha uma categoria</p>
+</div>
 
-    <div id="bebidas" class="section">
-      <h2>Bebidas</h2>
-      <ul>
-        <li>Refrigerante 1L</li>
-        <li>Refrigerante Lata</li>
-        <li>Suco</li>
-        <li>Red Bull</li>
-        <li>Água com Gás</li>
-        <li>Água Mineral</li>
-        <li>Água de Coco</li>
-        <li>Cerveja Budweiser</li>
-        <li>Cerveja Heineken</li>
-        <li>Cerveja Spaten</li>
-        <li>Cerveja Brahma</li>
-        <li>Cerveja Bohemia</li>
-      </ul>
-    </div>
+<div class="cards">
 
-    <div id="doses" class="section">
-      <h2>Doses e Cachaças</h2>
-      <ul>
-        <li>Red Label</li>
-        <li>Black & White</li>
-        <li>Campari</li>
-        <li>Martini</li>
-        <li>Rum Montilla</li>
-        <li>Drer</li>
-        <li>Cachaça Serra do Mel</li>
-        <li>Cachaça Sensação do Brejo</li>
-        <li>Cachaça Budega</li>
-        <li>Cachaça Ypióca</li>
-        <li>Cachaça Caranguejo</li>
-        <li>Cachaça Pitu</li>
-      </ul>
-    </div>
+<div class="card" onclick="showSection('espetos')">
+<img src="espetos.jpg">
+<h2>Espetos</h2>
+</div>
 
-    <div id="contato" class="section">
-      <h2>Contato</h2>
-      <p>📞 Delivery: <a href="tel:+5584998224086" style="color: #ffcc00;">(84) 99822-4086</a></p>
-      <p>📍 Rua Comendador José Gomes, 1 - Centro, Parelhas</p>
-    </div>
-  </div>
+<div class="card" onclick="showSection('caldos')">
+<img src="caldos.jpg">
+<h2>Caldos</h2>
+</div>
 
-  <div class="footer">
-    © 2025 Cardápio de Espetos. Todos os direitos reservados.
-  </div>
-<!--
-  <button class="whatsapp-button" onclick="abrirWhatsApp()">
-    Fale no WhatsApp
-  </button>
--->
-  <script>
-    function abrirWhatsApp() {
-      const telefone = '5584998224086';
-      const mensagem = encodeURIComponent('Olá! Gostaria de fazer um pedido.');
-      const url = `https://wa.me/${telefone}?text=${mensagem}`;
-      window.open(url, '_blank');
-    }
+<div class="card" onclick="showSection('bebidas')">
+<img src="bebidas.jpg">
+<h2>Bebidas</h2>
+</div>
 
-    function showSection(id) {
-      // Remove a classe "active" de todas as seções
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
+<div class="card" onclick="showSection('doses')">
+<img src="doses.jpg">
+<h2>Doses</h2>
+</div>
 
-      // Adiciona a classe "active" à seção selecionada
-      document.getElementById(id).classList.add('active');
-    }
+</div>
 
-    // Abrir diretamente a seção de Espetos no carregamento
-    window.onload = () => {
-      showSection('espetos');
-    };
-  </script>
+<div class="content">
+
+<div id="espetos" class="section">
+
+<h2>Espetos</h2>
+
+<img class="categoria-img" src="espetos.jpg">
+
+<ul>
+<li>Carne</li>
+<li>Asa de Frango</li>
+<li>Calabresa</li>
+<li>Peito de Frango</li>
+<li>Coração de Frango</li>
+<li>Coração de Boi</li>
+<li>Língua</li>
+<li>Ubre</li>
+<li>Porco</li>
+<li>Carne Moída</li>
+<li>Costela de Carneiro</li>
+<li>Medalhão de Frango</li>
+<li>Costela de Porco</li>
+<li>Queijo de Coalho</li>
+<li>Ovo de Codorna</li>
+<li>Pão de Alho</li>
+<li>Pão de Alho Recheado</li>
+<li>Linguiça de Charque</li>
+<li>Picanha em Pedaço</li>
+</ul>
+
+</div>
+
+<div id="caldos" class="section">
+
+<h2>Caldos</h2>
+
+<img class="categoria-img" src="caldos.jpg">
+
+<ul>
+<li>Sopa Pequena</li>
+<li>Sopa Grande</li>
+<li>Caldo de Costela P</li>
+<li>Caldo de Costela G</li>
+<li>Caldo de Mocotó P</li>
+<li>Caldo de Mocotó G</li>
+</ul>
+
+</div>
+
+<div id="bebidas" class="section">
+
+<h2>Bebidas</h2>
+
+<img class="categoria-img" src="bebidas.jpg">
+
+<ul>
+<li>Refrigerante 1L</li>
+<li>Refrigerante Lata</li>
+<li>Suco</li>
+<li>Red Bull</li>
+<li>Água com Gás</li>
+<li>Água Mineral</li>
+<li>Água de Coco</li>
+<li>Cerveja Budweiser</li>
+<li>Cerveja Heineken</li>
+<li>Cerveja Spaten</li>
+<li>Cerveja Brahma</li>
+<li>Cerveja Bohemia</li>
+</ul>
+
+</div>
+
+<div id="doses" class="section">
+
+<h2>Doses e Cachaças</h2>
+
+<img class="categoria-img" src="doses.jpg">
+
+<ul>
+<li>Red Label</li>
+<li>Black & White</li>
+<li>Campari</li>
+<li>Martini</li>
+<li>Rum Montilla</li>
+<li>Drer</li>
+<li>Cachaça Serra do Mel</li>
+<li>Cachaça Sensação do Brejo</li>
+<li>Cachaça Budega</li>
+<li>Cachaça Ypióca</li>
+<li>Cachaça Caranguejo</li>
+<li>Cachaça Pitu</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+</footer>
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll(".section").forEach(sec=>{
+sec.classList.remove("active")
+})
+
+document.getElementById(id).classList.add("active")
+
+window.scrollTo({
+top:document.querySelector(".content").offsetTop,
+behavior:"smooth"
+})
+
+}
+
+</script>
+
 </body>
 </html>
-
